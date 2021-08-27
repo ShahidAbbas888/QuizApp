@@ -1,0 +1,28 @@
+<div class="card"  >
+    <div class="card-header">
+        Questions
+    </div>
+    <div class="card-body">
+        <div  id="questions" *ngIf="questions.length>0 && num<questions.length else elseBlock"  >
+            <h2 >Current Score : {{points}}</h2>
+            <h3 class="card-title" [innerHtml]="questions[num].question"> </h3>
+            <ul>
+                <li *ngFor="let ans of questions[num].incorrect_answers" >
+                    <button class="btn btn-lg btn-outline-info" (click)="checkAnswer(questions[num].correct_answer,ans)"
+                    [innerHtml]="ans"></button>
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <h2>Your scored: {{points}}</h2>
+        <button class="btn btn-primary" (click)="start()">Restart Quiz</button>
+    </ng-template>
+    
+    
+</div>
+
+
+
+
